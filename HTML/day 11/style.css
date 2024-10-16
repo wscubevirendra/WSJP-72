@@ -1,0 +1,76 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 1000px;
+    height: 540px;
+    border: 2px solid red;
+    margin: 20px auto;
+}
+
+.row1 {
+    width: 996px;
+    height: 56px;
+    border: 2px solid green;
+    font-size: 30px;
+    text-align: center;
+    padding-top: 40px;
+}
+
+.row2 {
+    width: 1000px;
+    height: 50px;
+}
+
+.top-item {
+    width: 196px;
+    height: 36px;
+    border: 2px solid gold;
+    float: left;
+    text-align: center;
+    padding-top: 10px;
+    font-size: 30px;
+
+}
+
+
+.row3 {
+    width: 1000px;
+    height: 200px;
+}
+
+.left {
+    width: 250px;
+    height: 200px;
+
+    float: left;
+}
+
+.right {
+    width: 746px;
+    height: 196px;
+    border: 2px solid greenyellow;
+    float: left;
+
+}
+
+.left-item {
+    width: 246px;
+    height: 36px;
+    border: 2px solid red;
+    text-align: center;
+
+}
+
+.for-about-cenetr {
+    text-align: center;
+}
+
+.my-course-list{
+    width: 200px;
+    height: 200px;
+ 
+    margin: auto;
+}
