@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        .main {
+            width: 350px;
+            height: 350px;
+            border: 2px solid red;
+            margin: 10px auto;
+            position: relative;
+
+        }
+
+        .main img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .content {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            color: black;
+            background-color: white;
+            box-shadow: 0px 4px 4px gray;
+            z-index: -1;
+            transition: 1s;
+        }
+
+        .main:hover .content {
+            top: 100%;
+            left: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <img src="https://picsum.photos/200/300" alt="">
+        <div class="content">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cumque doloremque temporibus, vitae illo
+            laboriosam, sed officia mollitia ut facilis quod quidem excepturi harum, in voluptatibus officiis quo natus
+            earum. Maxime?
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero tempore quisquam, distinctio sequi vel autem
+            soluta aliquid illo facere assumenda in. Modi aut provident hic porro, aliquam aspernatur debitis sequi!
+        </div>
+
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,141 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    scroll-behavior: smooth;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    background: url(../images/waves.jpg) no-repeat top center fixed;
+    /* background-image: url(../images/waves.jpg);
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-attachment: fixed; */
+}
+
+main {
+    width: 1000px;
+    height: 3000px;
+    /* border: 2px solid red; */
+    margin: auto;
+}
+
+.top-section {
+    width: 1000px;
+    height: 650px;
+    /* border: 2px solid green; */
+    background: url(../images/headerbg.jpg) 10% 0 no-repeat fixed;
+}
+
+.patten {
+    width: 100%;
+    height: 100%;
+    background: url(../images/gridtile.png) repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.patten h2 {
+    width: 380px;
+    border: 2px solid #27E0FF;
+    font-size: 36px;
+    font-weight: lighter;
+    text-transform: uppercase;
+    padding: 25px 0px;
+    color: white;
+    border-left: none;
+    border-right: none;
+    text-align: center;
+
+}
+
+nav {
+    width: 635px;
+    height: 30px;
+
+    color: white;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+nav>div {
+    border-right: 2px solid white;
+    padding: 12px 39px 12px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+section {
+    width: 100%;
+    height: 931px;
+    border: 2px solid red;
+}
+
+#home .top-container {
+    width: 100%;
+    height: 321px;
+    border: 2px solid green;
+    background: #fcf5ed url(../images/3.jpg) center center no-repeat fixed;
+    background-size: 80% auto;
+}
+
+#about .top-container {
+    width: 100%;
+    height: 321px;
+    border: 2px solid green;
+    background: #fcf5ed url(../images/1.jpg) center center no-repeat fixed;
+    background-size: 80% auto;
+}
+
+#service .top-container {
+    width: 100%;
+    height: 321px;
+    border: 2px solid green;
+    background: #fcf5ed url(../images/2.jpg) center center no-repeat fixed;
+    background-size: 80% auto;
+}
+
+.overlay {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.overlay>div{
+    border: 4px solid white;
+    padding: 10px;
+   
+}
+
+.bottom-container {
+    width: 100%;
+    height: 610px;
+    border: 2px solid green;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 60px 10px;
+}
+
+.bottom-container p{
+    color: #182D55;
+    font-size: 17px;
+    line-height: 30px;
+}

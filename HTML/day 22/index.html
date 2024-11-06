@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        .main {
+            width: 350px;
+            height: 300px;
+            /* border: 2px solid red; */
+            margin: 100px auto;
+            display: flex;
+            position: relative;
+            box-shadow: 2px 3px 5px 3px gray;
+        }
+
+        .front-card {
+            width: 350px;
+            height: 300px;
+            background-color: lightcoral;
+            transform: rotateY(0deg);
+            transition: 1s;
+            position: absolute;
+            top: 0;
+            left: 0;
+            backface-visibility: hidden;
+
+
+        }
+
+        .back-card {
+            width: 350px;
+            height: 300px;
+            /* background-color: teal; */
+            background-color: white;
+            color: blue;
+            padding: 10px;
+            transform: rotateY(180deg);
+            transition: 1s;
+            position: absolute;
+            top: 0;
+            left: 0;
+            backface-visibility: hidden;
+        }
+
+     
+
+     
+
+        .main:hover .back-card {
+            transform: rotateY(0deg);
+
+        }
+
+        .main:hover .front-card {
+            transform: rotateY(180deg);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="front-card">
+           <img width="100%" height="100%" src="https://picsum.photos/200/300
+           " alt="">
+        </div>
+        <div class="back-card">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Pariatur rem blanditiis eius facere, esse corporis
+            animi eveniet? Modi, reiciendis atque ut optio possimus reprehenderit perspiciatis nobis repudiandae hic
+            distinctio ab.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime velit aspernatur tempore alias. Perspiciatis
+            cupiditate ratione impedit eveniet iure voluptate similique sunt quis explicabo molestiae temporibus aliquid
+            praesentium, asperiores dolore?
+        </div>
+    </div>
+</body>
+
+</html>
