@@ -1,0 +1,33 @@
+<html>
+<script>
+    // var num = prompt("number")
+    // for (var i = 1; i <= 10; i++) {
+    //     console.log(i * num)
+    // }
+
+    const data = {
+        a: {
+            name: "mahesh",
+            age: 10
+        },
+        b: {
+            name: "ganesh",
+            age: 20
+        },
+        c: {
+            name: "virendra",
+            age: 10
+        }
+
+    }
+
+    const newData = Object.keys(data)
+    let newarr = []
+    for (let d of newData) {
+        newarr.push({id:d, ...data[d]})
+    }
+    console.log(newarr)
+
+</script>
+
+</html>

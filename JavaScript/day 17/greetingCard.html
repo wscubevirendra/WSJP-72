@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            width: 1000px;
+            height: 500px;
+            /* border: 2px solid red; */
+            margin: 30px auto;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .card {
+            width: 45%;
+            height: 100%;
+            border: 4px double green;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            padding: 10px;
+        }
+
+        input,
+        textarea {
+            padding: 10px;
+            font-size: 18px;
+        }
+
+        label {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .bgChange {
+            width: 1000px;
+            margin: auto;
+        }
+
+        input[type="color"] {
+            width: 100px;
+            height: 50px;
+            padding: 10px;
+        }
+
+        button {
+            padding: 10px;
+            background: lightblue;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="card">
+            <label for="">To:-</label>
+            <input onkeyup="greetingCard(this,0)" class="inp" type="text">
+            <label for="">Message</label>
+            <textarea onkeyup="greetingCard(this,1)" class="inp" name="" id=""></textarea>
+            <label for="">From:-</label>
+            <input onkeyup="greetingCard(this,2)" class="inp" type="text">
+        </div>
+        <div class="card">
+            <h3 class="output">To:-</h3>
+            <p class="output">Msg:-</p>
+            <h3 class="output">From:-</h3>
+        </div>
+
+
+    </div>
+    <div class="bgChange">
+        <input onchange="bgChange(this.value)" type="color">
+        <button onclick="FontSizeCHange(1)">+</button>
+        <input value="16" id="FontSizeSelector" type="text">
+        <button onclick="FontSizeCHange(2)">-</button>
+    </div>
+    <script>
+        var inp = document.getElementsByClassName("inp");
+        var output = document.getElementsByClassName("output");
+        var card = document.getElementsByClassName("card");
+        var FontSizeSelector = document.getElementById("FontSizeSelector")
+        var font = 16;
+
+
+        function greetingCard(data, flag) {
+            output[flag].innerText = data.value
+
+        }
+
+        function bgChange(colorCode) {
+            console.log(colorCode)
+            card[1].style.background = colorCode
+
+        }
+
+        function FontSizeCHange(flag) {
+            if (flag == 1) {
+                font++
+            } else {
+                font--
+
+            }
+
+            card[1].style.fontSize = font + "px"
+            FontSizeSelector.value=font
+        }
+
+
+    </script>
+</body>
+
+</html>

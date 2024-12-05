@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+    <style>
+        #box {
+            width: 300px;
+            height: 200px;
+            border: 2px solid red;
+        }
+
+        button {
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <input onkeyup="getValue(event)" type="text" id="inp">
+    <ul id="heading"></ul>
+
+    <script>
+        var inp = document.getElementById("inp")
+        var heading = document.getElementById("heading")
+        var sum;
+        console.log(sum)
+        function getValue(event) {
+            if (event.key == "ArrowRight" || event.key == "Enter") {
+                sum += `<li>${inp.value} <i class="xmark">X<i></li>`
+                heading.innerHTML = sum
+                inp.value = ""
+            }
+
+        }
+
+    </script>
+
+</body>
+
+</html>

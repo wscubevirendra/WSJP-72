@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="box">Box1</div>
+    <div class="box">Box2</div>
+    <div class="box">Box3</div>
+    <div class="box">Box4</div>
+    <div class="box">Box5</div>
+    <div class="box">Box6</div>
+    <div class="box">Box7</div>
+    <div class="box">Box8</div>
+    <div class="box">Box9</div>
+  
+    <button onclick="demo()">Click</button>
+    <script>
+        var box = document.getElementsByClassName("box")
+        console.log(box[3])
+
+        function demo() {
+            box[6].innerHTML = "<p>  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloremque inventore error veniam eligendi totam distinctio voluptas quidem ratione pariatur minus consequuntur quod, repellat enim vitae optio similique. Beatae, quam eius! </p>"
+        }
+
+
+
+    </script>
+
+</body>
+
+</html>

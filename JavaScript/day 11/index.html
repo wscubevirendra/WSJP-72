@@ -1,0 +1,40 @@
+<html>
+
+<script>
+
+    function calc(a, b, sign) {
+        
+        var result;
+        if (sign == "+") {
+            result = a + b
+        } else if (sign == "-") {
+            result = a - b
+
+        } else if (sign == "*") {
+            result = a * b
+
+        } else if (sign == "/") {
+            result = a / b
+
+        } else if (sign == "%") {
+            result = a % b
+
+        } else {
+            result = "Inavlid input"
+
+        }
+
+        return result
+
+
+    }
+
+    console.log(calc(100, 200, "-"))
+    console.log(calc(100, 200, "*"))
+    console.log(calc(100, 200, "/"))
+    console.log(calc(100, 200, "+"))
+    console.log(calc(100, 200, "hello"))
+
+</script>
+
+</html>

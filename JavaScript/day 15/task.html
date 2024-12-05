@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+</head>
+
+<body>
+    <button class="btn" onclick="incHandler()">+</button>
+    <h1 id="display">0</h1>
+    <button class="btn" disabled="true" onclick="decHandler()">-</button>
+
+    <script>
+        var display = document.getElementById("display");
+        var btn = document.getElementsByClassName("btn");
+        console.log(btn)
+
+
+        var count = 0
+        function incHandler() {
+            if (count >= 10) return
+            //11>=10
+
+            count++
+            display.innerText = count
+            btn[1].disabled = false
+
+
+        }
+
+
+        function decHandler() {
+            if (count == 0) return
+            count--
+            display.innerText = count
+
+        }
+
+    </script>
+
+</body>
+
+</html>
