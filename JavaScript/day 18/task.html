@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            width: 1200px;
+            display: flex;
+            flex-wrap: wrap;
+            margin: auto;
+            gap: 20px;
+        }
+
+        .card {
+            width: 200px;
+            height: 200px;
+            border: 2px solid green;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+    </div>
+    <script>
+        var container = document.querySelector(".container")
+        for (var i = 1; i <= 20; i++) {
+            const rgbCode = (122, 222, 134)
+            var mycard = document.createElement("div");
+            mycard.classList.add("card")
+            mycard.style.background = rgbCode
+            container.appendChild(mycard)
+
+        }
+
+        const user = ['John', 'Doe', 25];
+        const [firstName, lastName] = user;
+        console.log(firstName)
+
+    </script>
+
+</body>
+
+</html>

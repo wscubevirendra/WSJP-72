@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            background-color: white;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        form {
+            width: 500px;
+            height: 500px;
+            box-shadow: 0px 0px 5px gray;
+            margin-top: 40px;
+            padding: 10px;
+        }
+
+        .group {
+            margin-bottom: 10px;
+        }
+
+        label {
+            display: block;
+            font-size: 20px;
+            margin-bottom: 4px;
+        }
+
+        input,
+        textarea,
+        select,
+        button {
+            width: 100%;
+            padding: 10px;
+        }
+
+        button {
+            background-color: brown;
+            color: white;
+            font-size: 22px;
+        }
+
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <form onsubmit="return submitHandler()">
+        <div class="group">
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" data-validation="required">
+            <div id="nameError" class="error"></div>
+        </div>
+        <div class="group">
+            <label for="email">Email</label>
+            <input name="email" id="email" type="email" data-validation="required,email">
+            <div id="emailError" class="error"></div>
+        </div>
+        <div class="group">
+            <label for="number">Mobile Number</label>
+            <input id="number" name="number" type="tel" data-validation="required,number">
+            <div id="numberError" class="error"></div>
+        </div>
+        <div class="group">
+            <label for="address">Address</label>
+            <textarea name="address" data-validation="required" id="address"></textarea>
+            <div id="addressError" class="error"></div>
+        </div>
+        <div class="group">
+            <label for="city">City</label>
+            <select name="city" data-validation="required" id="city">
+                <option value="">Select</option>
+                <option value="jaipur">Jaipur</option>
+                <option value="jodhpur">Jodhpur</option>
+                <option value="kota">Kota</option>
+            </select>
+            <div id="cityError" class="error"></div>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        function submitHandler() {
+            const inputs = document.querySelectorAll('input[data-validation],textarea[data-validation],select[data-validation]');
+            let valid = true;
+
+            inputs.forEach(function (input) {
+                const value = input.value.trim();
+                const validations = input.getAttribute('data-validation').split(',');
+                console.log(validations)
+                const errorDiv = document.getElementById(input.id + 'Error');
+                errorDiv.innerText = "";
+                validations.forEach(
+                    function (validation) {
+                        if (validation === 'required' && !value) {
+                            errorDiv.innerText = "This field is required";
+                            valid = false;
+                        } else if (input.type === 'email') {
+                            // Simple email validation regex
+                            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                            if (!emailPattern.test(value)) {
+                                errorDiv.innerText = "Please enter a valid email address";
+                                valid = false;
+                            }
+                        } else if (input.type === 'tel') {
+                            // Simple phone number validation (10-digit number)
+                            const phonePattern = /^\d{10}$/;
+                            if (!phonePattern.test(value)) {
+                                errorDiv.innerText = "Please enter a valid 10-digit mobile number";
+                                valid = false;
+                            }
+                        }
+
+                    }
+                )
+
+            });
+
+            return valid;
+        }
+    </script>
+</body>
+
+</html>

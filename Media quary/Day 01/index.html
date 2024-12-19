@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+
+        }
+
+        .container {
+            max-width: 1300px;
+            padding: 20px;
+            background: red;
+            color: white;
+            text-align: center;
+            font-size: 40px;
+            margin: auto;
+
+        }
+
+        @media (min-width:0px) and (max-width:576px) {
+            .container {
+                background-color: gold;
+                text-align: right;
+                color: red;
+            }
+        }
+
+        @media (min-width:576px) and (max-width:768px) {
+            .container{
+                background-color: brown;
+                color: blue;
+                
+            }
+        }
+        @media (min-width:768px) and (max-width:992px) {
+            .container{
+                background-color: black;
+                color: blue;
+                
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">width-According to device viewport </div>
+
+</body>
+
+</html>

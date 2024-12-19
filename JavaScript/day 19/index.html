@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            width: 1000px;
+            height: 450px;
+            /* border: 2px solid red; */
+            margin: 40px auto;
+            box-shadow: 2px 2px 2px 2px gray;
+            overflow: hidden;
+            padding: 2px;
+            display: flex;
+            gap: 20px;
+        }
+
+        .item {
+            width: 33%;
+            height: 100%;
+            /* border: 2px solid green; */
+            transform: translateX(0px);
+            transition: 0.6s;
+            transition-timing-function: ease-in-out;
+            flex-shrink: 0;
+        }
+
+        .item img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .btn-container {
+            text-align: center;
+
+        }
+
+        .btn {
+            padding: 10px;
+            background-color: lightblue;
+            border: none;
+            border-radius: 10px;
+            margin: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="item">
+            <img src="1.jpg" alt="">
+        </div>
+        <div class="item">
+            <img src="2.jpg" alt="">
+
+        </div>
+        <div class="item">
+            <img src="3.jpg" alt="">
+
+        </div>
+        <div class="item">
+            <img src="4.jpg" alt="">
+
+        </div>
+        <div class="item">
+            <img src="5.jpg" alt="">
+
+        </div>
+
+    </div>
+    <div class="btn-container">
+        <button onclick="prev()" class="btn">Prev</button>
+        <button onclick="next()" class="btn">Next</button>
+    </div>
+    <script>
+        var items = document.querySelectorAll(".item");
+        var poe = 0
+
+        function next() {
+            if (items.length - 2 == poe) return
+            poe++
+            for (img of items) {
+                img.style.transform = `translateX(-${poe * 200}%)`
+
+            }
+
+        }
+        function prev() {
+            if (poe == 0) return
+            poe--
+            for (img of items) {
+                img.style.transform = `translateX(-${poe * 200}%)`
+            }
+
+        }
+
+    </script>
+</body>
+
+</html>

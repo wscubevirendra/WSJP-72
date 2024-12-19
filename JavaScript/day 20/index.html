@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" />
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            width: 800px;
+            min-height: 400px;
+            margin: 20px auto;
+            box-shadow: 2px 2px 2px 3px gray;
+            padding: 10px;
+        }
+
+        #inp {
+            width: 100%;
+            padding: 8px;
+            font-size: 18px;
+        }
+
+        #todo-box-list {
+            list-style: none;
+            margin-top: 20px;
+
+        }
+
+        #todo-box-list li {
+            width: 100%;
+            margin-top: 10px;
+            padding: 4px;
+            font-size: 20px;
+            position: relative;
+        }
+
+        li i {
+            position: absolute;
+            right: 10px;
+            cursor: pointer;
+        }
+
+        .done {
+            text-decoration: line-through;
+            background-color: gold !important;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <input id="inp" type="text">
+        <ul id="todo-box-list">
+
+
+        </ul>
+
+    </div>
+
+    <script>
+        var inp = document.querySelector("#inp");
+        var todoBoxList = document.querySelector("#todo-box-list");
+        inp.addEventListener(
+            "keyup",
+            function (e) {
+                if (e.key == "Enter") {
+                    if (this.value == "") {
+                        alert("Empty input")
+                    } else {
+                        addItem(this.value)
+                        this.value = ""
+                    }
+                }
+            }
+        )
+
+        function addItem(value) {
+            var r = parseInt(Math.random() * 100).toString(16)
+            var g = parseInt(Math.random() * 100).toString(16)
+            var b = parseInt(Math.random() * 100).toString(16)
+            var code = "#" + r + g + b;
+            var listItem = document.createElement("li");
+            listItem.style.background = code
+            listItem.innerHTML = `${value} <i class="fa-solid fa-trash"></i>`
+            todoBoxList.appendChild(listItem)
+            listItem.querySelector("i").addEventListener(
+                "click",
+                function () {
+                    listItem.remove()
+                }
+            )
+
+            listItem.addEventListener(
+                "click",
+                function () {
+                    this.classList.toggle("done")
+                }
+            )
+
+        }
+
+
+    </script>
+
+
+</body>
+
+</html>

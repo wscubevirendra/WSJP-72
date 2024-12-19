@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            width: 1000px;
+            height: 500px;
+            background-color: white;
+            box-shadow: 0px 1px 2px gray;
+            border-radius: 10px;
+            margin: 20px auto;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .container-left {
+            width: 20%;
+            height: 100%;
+            /* border: 2px solid red; */
+            box-shadow: 2px 3px 4px 4px gray;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            overflow-y: scroll;
+        }
+
+        .container-left img {
+            width: 100%;
+            height: 150px;
+            border: 1px solid red;
+            cursor: pointer;
+
+        }
+
+        .container-right {
+            width: 70%;
+            height: 100%;
+            /* border: 2px solid gold; */
+            box-shadow: 2px 3px 4px 4px gray;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="container-left">
+            <img onmousemove="imageSwap(this.src)" src="1.jpeg" alt="">
+            <img onmousemove="imageSwap(this.src)" src="2.jpeg" alt="">
+            <img onmousemove="imageSwap(this.src)" src="3.jpeg" alt="">
+            <img onmousemove="imageSwap(this.src)" src="4.jpeg" alt="">
+            <img onmousemove="imageSwap(this.src)" src="5.jpeg" alt="">
+            <img onmousemove="imageSwap(this.src)" src="6.jpeg" alt="">
+            <img onmousemove="imageSwap(this.src)" src="7.jpeg" alt="">
+
+        </div>
+        <div class="container-right">
+            <img width="100%" height="100%" src="1.jpeg" alt="">
+        </div>
+
+    </div>
+
+    <script>
+        var myImg = document.querySelector(".container-right img")
+        function imageSwap(value) {
+            myImg.src = value
+            
+
+        }
+    </script>
+
+</body>
+
+</html>
