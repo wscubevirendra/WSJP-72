@@ -1,0 +1,40 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    background-color: black;
+}
+
+#input {
+    max-width: 600px !important;
+}
+
+.overlay {
+    width: 100%;
+    bottom: -500px;
+    right: 0px;
+    background-color: white;
+    box-shadow: 0px 2px 0px gray;
+    transition: 0.5s;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.my-col {
+    overflow: hidden;
+    width: 23%;
+    padding: 0 !important;
+    position: relative;
+}
+
+.my-col:hover .overlay {
+    bottom: 0px;
+
+}
+
+#parentRow {
+    gap: 10px;
+}

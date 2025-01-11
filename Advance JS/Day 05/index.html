@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form with Data Cards</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-color: #f5f5f5;
+        }
+
+        .form-container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            min-width: 300px;
+            margin-bottom: 20px;
+        }
+
+        .form-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .form-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .form-container button:hover {
+            background-color: #0056b3;
+        }
+
+        .cards-container {
+            max-width: 1200px;
+            display: flex;
+            margin: auto;
+            gap: 15px;
+            flex-wrap: wrap;
+
+        }
+
+        .card {
+            width: 300px;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .card h3 {
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            margin: 5px 0;
+        }
+
+        .card button {
+            padding: 5px 10px;
+            background-color: #ff4d4d;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .card button:hover {
+            background-color: #cc0000;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="form-container">
+        <h2>Submit Your Details</h2>
+        <form id="dataForm">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name">
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email">
+            </div>
+            <div class="form-group">
+                <label for="contact">Contact Number</label>
+                <input type="text" id="contact" name="contact">
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <div class="cards-container" id="cardsContainer">
+
+
+    </div>
+
+    <script>
+        const form = document.getElementById('dataForm');
+        const cardsContainer = document.getElementById('cardsContainer');
+
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const data = {
+                name: event.target.name.value,
+                email: event.target.email.value,
+                contact: event.target.contact.value
+            }
+
+            const user = JSON.parse(localStorage.getItem("student")) ?? [];
+            const newUser = [...user, data]
+            localStorage.setItem("student", JSON.stringify(newUser))
+
+            showdata()
+
+        });
+
+        const showdata = () => {
+
+            const user = JSON.parse(localStorage.getItem("student")) ?? [];
+            let finalData = ''
+            user.forEach(
+                (data, index) => {
+                    finalData += `
+                    <div class="card">
+                     <p><strong>Name:</strong> ${data.name}</p>
+            <p><strong>Email:</strong> ${data.email}</p>
+            <p><strong>Contact:</strong> ${data.contact}</p>
+            <button >Delete</button>
+            </div>
+                    `
+                }
+            )
+
+            cardsContainer.innerHTML=finalData
+
+          
+        }
+
+        showdata()
+
+
+    </script>
+
+</body>
+
+</html>

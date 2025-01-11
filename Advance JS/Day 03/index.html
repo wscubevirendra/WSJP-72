@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <button onclick="fetchData()">Click</button>
+
+    <div  class="container-fluid">
+        <div class="row">
+            <div class="col-2">
+                <ul class="list-group">
+                    <li class="list-group-item active" aria-current="true">An active item</li>
+                    <li class="list-group-item">A second item</li>
+                    <li class="list-group-item">A third item</li>
+                    <li class="list-group-item">A fourth item</li>
+                    <li class="list-group-item">And a fifth one</li>
+                  </ul>
+
+            </div>
+            <div class="col-10 ">
+                <div class="row CardSection">
+
+                </div>
+
+            </div>
+            
+        </div>
+    </div>
+
+
+    <script>
+        const CardSection=document.querySelector(".CardSection")
+        async function fetchData() {
+
+            const responce = await fetch("https://dummyjson.com/products");
+            const data = await responce.json()
+            display(data.products)
+
+        }
+
+        function display(data) {
+            data.forEach((d, i) => {
+                const box = document.createElement("div");
+                box.classList.add("col-3")
+                box.innerHTML = `
+                <div class="card">
+                    <img src=${d.thumbnail}  class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">${d.title}</h5>
+                        <p class="card-text">${d.description}</p>
+                       
+                    </div>
+                `
+
+                CardSection.appendChild(box)
+              
+            });
+        }
+    </script>
+
+</body>
+
+</html>

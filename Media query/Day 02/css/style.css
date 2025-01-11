@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Inter", serif;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+header {
+    width: 100%;
+    background-color: white;
+    box-shadow: 0px 0px 1px 1px gray;
+}
+
+.container {
+    max-width: 1200px;
+    height: 100%;
+    /* border: 2px solid red; */
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+
+.button-group button:nth-child(1) {
+    max-width: 166px;
+    height: 40px;
+    border-radius: 8px;
+    color: #27AE60;
+    border: 1px solid #27AE60;
+    padding: 10px 18px 10px 18px;
+    background-color: transparent;
+    margin-right: 20px;
+
+}
+
+.button-group button:nth-child(2) {
+    max-width: 90px;
+    height: 40px;
+    border-radius: 8px;
+    padding: 10px 18px 10px 18px;
+    background: linear-gradient(#0ACEFE, #2699FB);
+    border: none;
+    color: white;
+}
+
+.button-group i {
+    color: #27AE60;
+    font-weight: bold;
+    margin-right: 6px;
+
+}
+
+@media only screen and (min-width:0px) and (max-width:576px) {
+    .button-group{
+        display: none;
+    }
+
+    .container{
+        justify-content: center;
+    }
+}
+
+section{
+    max-width: 1200px;
+    margin: auto;
+    border: 2px solid red;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.top-left{
+    width: 48%;
+    border: 1px solid green;
+}
+
+.top-left h1{
+    font-size: 52px;
+    font-weight: 700;
+}
+.top-left h1 span{
+    color: #2699FB;
+    background-image: url("../images/Vector\ 63\ \(1\).png");
+}
+
+.top-right{
+    width: 48%;
+    height: 552px;
+    border: 1px solid green;
+    background-color: #E9F5FF;
+    border-radius: 50%;
+   
+}
+
