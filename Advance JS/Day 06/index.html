@@ -1,0 +1,49 @@
+<html>
+<script>
+
+    // class student {
+    //     constructor(name, age) {
+    //         this.name = name
+    //         this.age = age;
+    //         // console.log("Hello")
+
+    //     }
+
+    //     details() {
+    //         console.log(`I am ${this.name} and I am ${this.age} year old`)
+    //     }
+    // }
+
+    // const person = new student("Vinod", 25);
+    // console.log(person)
+
+    const promise = new Promise(
+        (resolve, reject) => {
+            let num = 21;
+            if (num % 2 == 0) {
+                resolve("Even Number")
+            } else {
+                reject("Odd NUmber")
+            }
+
+        }
+    )
+
+    promise.then(
+        (responce) => {
+            console.log(responce)
+
+        }
+    ).catch(
+        (err) => {
+            console.log(err)
+        }
+    )
+
+
+
+
+
+</script>
+
+</html>

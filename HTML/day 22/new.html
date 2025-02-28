@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .main {
+            width: 350px;
+            height: 300px;
+            box-shadow: 2px 2px 2px 2px gray;
+            margin: 50px auto;
+            position: relative;
+        }
+
+        .front_card {
+            width: 100%;
+            height: 100%;
+            background-color: red;
+            position: absolute;
+            transform: rotateY(0deg);
+            transform: rotateY(180deg);
+            transform: 1s;
+
+        }
+
+        .back_card {
+            width: 100%;
+            height: 100%;
+            background-color: green;
+            position: absolute;
+            transform: rotateY(180deg);
+            backface-visibility: hidden;
+            transition: 1s;
+
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .main:hover .back_card {
+            transform: rotateY(0deg);
+
+        }
+
+        .main:hover .front_card {
+            transform: rotateY(180deg);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="front_card">
+            <img src="https://picsum.photos/200/300
+            " alt="">
+
+        </div>
+        <div class="back_card">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorum itaque quas, architecto repudiandae libero
+            voluptatem aperiam recusandae odio, nulla, minima dolor eveniet porro nesciunt! Dolor eum ea deserunt et
+            libero.
+
+        </div>
+
+    </div>
+</body>
+
+</html>
