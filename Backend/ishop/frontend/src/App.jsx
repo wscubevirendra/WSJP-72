@@ -6,6 +6,11 @@ import Home from './website/Pages/Home'
 import DashBoard from './admin/Pages/DashBoard'
 import ViewCategory from './admin/Pages/Category/ViewCategory'
 import AddCategory from './admin/Pages/Category/AddCategory'
+import EditCategory from './admin/Pages/Category/EditCategory'
+import ViewColor from './admin/Pages/Colors/ViewColor'
+import AddColor from './admin/Pages/Colors/AddColor'
+import ViewProduct from './admin/Pages/Product/ViewProduct'
+import AddProduct from './admin/Pages/Product/AddProduct'
 
 export default function App() {
   const router = createBrowserRouter([
@@ -36,6 +41,26 @@ export default function App() {
         {
           path: "category/add",
           element: <AddCategory />
+        },
+        {
+          path: "category/edit/:category_id",
+          element: <EditCategory />
+        },
+        {
+          path: "colors",
+          element: <ViewColor />
+        },
+        {
+          path: "colors/add",
+          element: <AddColor />
+        },
+        {
+          path: "product",
+          element: <ViewProduct />
+        },
+        {
+          path: "product/add",
+          element: <AddProduct />
         }
 
       ]

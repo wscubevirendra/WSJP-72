@@ -4,19 +4,23 @@ import { HiChevronRight } from "react-icons/hi";
 import { Link } from 'react-router-dom';
 import { MainContext } from "../../../Context"
 import axios from 'axios';
+import Swal from 'sweetalert2'
 
 
 export default function ViewCategory() {
   const { notify, API_BASE_URL, category, getCategory, CATEGORY_URL } = useContext(MainContext);
 
   const statusHandler = (id) => {
+
+
+
+
     axios.patch(API_BASE_URL + CATEGORY_URL + "/status/" + id).then(
       (response) => {
         notify(response.data.msg, response.data.status)
         if (response.data.status == 1) {
-          getCategory()
+          getCategory();
         }
-
       }
     ).catch(
       (error) => {
@@ -26,9 +30,43 @@ export default function ViewCategory() {
     )
   }
 
+  const deleteCategory = (category_id) => {
+
+
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+
+
+        axios.delete(API_BASE_URL + CATEGORY_URL + "/delete/" + category_id).then(
+          (response) => {
+            notify(response.data.msg, response.data.status);
+            if (response.data.status == 1) {
+              getCategory();
+            }
+          }
+        ).catch(
+          (error) => {
+            notify("Internal Server Error", false)
+          }
+        )
+      }
+    });
+
+
+
+  }
+
   useEffect(
     () => {
-      getCategory()
+      getCategory();
     },
     []
   )
@@ -82,24 +120,30 @@ export default function ViewCategory() {
             </tr>
           </thead>
           <tbody>
-            {category.map((category) => (
-              <tr key={category.id} className="border-b hover:bg-gray-50">
-                <td className="p-3">{category.name}</td>
-                <td className="p-3">
-                  <img src={category.image} alt={category.name} className="w-12 h-12 rounded-md object-cover" />
-                </td>
-                <td className="p-3">{category.slug}</td>
-                <td className="p-3">
-                  <button onClick={() => statusHandler(category._id)} className={`px-3 py-1 rounded-full text-white ${category.status ? "bg-green-500" : "bg-red-500"}`}>
-                    {category.status ? "Active" : "Inactive"}
-                  </button>
-                </td>
-                <td className="p-3 space-x-2">
-                  <button className="bg-blue-500 text-white px-3 py-1 rounded-md">✏️</button>
-                  <button className="bg-red-500 text-white px-3 py-1 rounded-md">🗑️</button>
-                </td>
-              </tr>
-            ))}
+            {
+              Array.isArray(category)
+              &&
+              category.map((category) => (
+                <tr key={category.id} className=" hover:bg-gray-50">
+                  <td className="p-3">{category.name}</td>
+                 
+                  <td className="p-3">{category.slug}</td>
+                  <td className="p-3">
+                    <img src={API_BASE_URL + "/images/category/" + category.categoryImage} alt={category.name} className="w-10 h-10 rounded-md object-cover" />
+                  </td>
+                  <td className="p-3">
+                    <button onClick={() => statusHandler(category._id)} className={`px-3 py-1 rounded-full text-white ${category.status ? "bg-green-500" : "bg-red-500"}`}>
+                      {category.status ? "Active" : "Inactive"}
+                    </button>
+                  </td>
+                  <td className="p-3 space-x-4">
+                    <Link to={`/admin/category/edit/${category._id}`}>
+                      <button className="bg-blue-500 text-white p-1 rounded-md">✏️</button>
+                    </Link>
+                    <button onClick={() => deleteCategory(category._id)} className="bg-red-500 text-white p-1  rounded-md">🗑️</button>
+                  </td>
+                </tr>
+              ))}
           </tbody>
         </table>
       </div>

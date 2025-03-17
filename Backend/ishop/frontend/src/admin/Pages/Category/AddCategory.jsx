@@ -18,12 +18,16 @@ export default function AddCategory() {
 
   const submitHandler = (e) => {
     e.preventDefault()
-    const data = {
-      name: categoryName.current.value,
-      slug: categorySlug.current.value
-    }
+    const formData = new FormData();
+   
 
-    axios.post(API_BASE_URL + CATEGORY_URL + "/create", data).then(
+    formData.append("name", categoryName.current.value);
+    formData.append("slug", categorySlug.current.value);
+    formData.append("categoryImage", e.target.categoryImage.files[0])
+
+    //Object   image-Binary
+
+    axios.post(API_BASE_URL + CATEGORY_URL + "/create", formData).then(
       (response) => {
         notify(response.data.msg, response.data.status)
         if (response.data.status == 1) {
@@ -34,6 +38,7 @@ export default function AddCategory() {
       }
     ).catch(
       (error) => {
+        console.log(error)
         notify("Internal Server Error", false)
 
       }
@@ -117,6 +122,7 @@ export default function AddCategory() {
             <label className="block text-gray-600 font-medium mb-1">Upload Image</label>
             <input
               type="file"
+              name='categoryImage'
               className="w-full px-4 py-2 border rounded-lg cursor-pointer focus:ring-2 focus:ring-blue-500 focus:outline-none"
             />
           </div>
