@@ -160,14 +160,26 @@ class UserController {
                         )
 
                         await Promise.all(allPromise)
-                    
+                        const dbCartData = await CartModel.find({ user_id: userId }).populate("product_id", "_id finalPrice originalPrice");
+                        console.log(dbCartData)
+
                         resolve(
                             {
                                 msg: "move to DB",
                                 status: 1,
+                                dbCartData
                             }
                         )
-                    } 
+                    } else {
+                        const dbCartData = await CartModel.find({ user_id: userId }).populate("product_id", "_id finalPrice originalPrice");
+                        resolve(
+                            {
+                                msg: "move to DB",
+                                status: 1,
+                                dbCartData
+                            }
+                        )
+                    }
 
                 } catch (error) {
                     console.log(error)
@@ -182,6 +194,47 @@ class UserController {
         )
 
     }
+
+    addToCart(cd) {
+        return new Promise(
+            async (resolve, reject) => {
+                try {
+                    const d = await CartModel.findOne({ user_id: cd.userId, product_id: cd.productId })
+
+                    if (d) {
+                        //qty increase
+                        await CartModel.updateOne(
+                            { _id: d._id },
+                            {
+                                $inc: {
+                                    qty: Number(cd.qty)
+                                }
+                            }
+                        )
+
+                    } else {
+                        new CartModel({
+                            user_id: userId,
+                            product_id: cd.productId,
+                            qty: cd.qty
+                        }).save()
+
+                    }
+
+                } catch (error) {
+                    console.log(error)
+                    reject(
+                        {
+                            msg: "Internal server error",
+                            status: 0
+                        }
+                    )
+                }
+            }
+        )
+
+    }
+
 
 }
 

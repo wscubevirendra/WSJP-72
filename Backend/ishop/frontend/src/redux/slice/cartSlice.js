@@ -26,9 +26,9 @@ export const cartSlice = createSlice({
 
         },
         emptyCart(state) {
-            state.data=[];
-            state.total=0;
-            state.originalTotal=0;
+            state.data = [];
+            state.total = 0;
+            state.originalTotal = 0;
             localStorage.removeItem("cart-data");
             localStorage.removeItem("total");
             localStorage.removeItem("originalTotal");
@@ -45,12 +45,20 @@ export const cartSlice = createSlice({
 
             }
 
+        },
+        dbToCart(state, { payload }) {
+            state.data = payload.data
+            state.total = payload.finalPrice
+            state.originalTotal = payload.originalPrice
+            localStorage.setItem("cart-data", JSON.stringify(state.data));
+            localStorage.setItem("total", state.total);
+            localStorage.setItem("originalTotal", state.originalTotal);
         }
 
     },
 })
 
 // Action creators are generated for each case reducer function
-export const { addToCart, emptyCart, lsToCart } = cartSlice.actions
+export const { addToCart, emptyCart, lsToCart, dbToCart } = cartSlice.actions
 
 export default cartSlice.reducer

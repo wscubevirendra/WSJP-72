@@ -39,8 +39,27 @@ UserRouter.post(
 UserRouter.post(
     "/move-to-db/:userId",
     (req, res) => {
-        
+
         const result = new UserController().moveToDB(req.params.userId, req.body);
+        result.then(
+            (response) => {
+                res.send(response)
+            }
+        ).catch(
+            (error) => {
+                res.send(error)
+
+            })
+
+    }
+)
+
+
+UserRouter.post(
+    "/add-to-cart",
+    (req, res) => {
+
+        const result = new UserController().addToCart(req.body);
         result.then(
             (response) => {
                 res.send(response)

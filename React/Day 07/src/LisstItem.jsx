@@ -1,6 +1,8 @@
 import React, { useState } from "react"
 import { IoMdHeartDislike, IoMdHeart } from "react-icons/io";
 function LisstItem(props) {
+    console.log(props.prod)
+    return
     const [toggle, Settoggle] = useState(true)
     const toggleHadler = () => {
         Settoggle(!toggle)

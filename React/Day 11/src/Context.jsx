@@ -60,6 +60,8 @@ export default function Context(props) {
 
     }
 
+   
+
 
     const qtyHandler = (id, flag) => {
         let updateCart;

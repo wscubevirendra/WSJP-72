@@ -31,7 +31,7 @@ export default function App() {
         {
           recipes.map((data, index) => {
             return (
-              <List {...data} i={index}  />
+              <List prod={data} i={index}  />
             )
           })
         }

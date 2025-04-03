@@ -4,8 +4,10 @@ import { HiChevronRight } from "react-icons/hi";
 import { Link } from 'react-router-dom';
 import axios from 'axios'
 import { MainContext } from '../../../Context';
+import { useSelector } from 'react-redux';
 
 export default function AddCategory() {
+  const token = useSelector((state) => state.admin.token)
   const { notify, API_BASE_URL, CATEGORY_URL } = useContext(MainContext)
   const categoryName = useRef();
   const categorySlug = useRef();
@@ -19,7 +21,7 @@ export default function AddCategory() {
   const submitHandler = (e) => {
     e.preventDefault()
     const formData = new FormData();
-   
+
 
     formData.append("name", categoryName.current.value);
     formData.append("slug", categorySlug.current.value);
@@ -27,7 +29,11 @@ export default function AddCategory() {
 
     //Object   image-Binary
 
-    axios.post(API_BASE_URL + CATEGORY_URL + "/create", formData).then(
+    axios.post(API_BASE_URL + CATEGORY_URL + "/create", formData, {
+      headers: {
+        Authorization: token
+      }
+    }).then(
       (response) => {
         notify(response.data.msg, response.data.status)
         if (response.data.status == 1) {

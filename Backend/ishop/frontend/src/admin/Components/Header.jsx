@@ -1,8 +1,11 @@
 import React from 'react'
 import { CiSettings } from "react-icons/ci";
+import { useSelector } from 'react-redux';
 
 
 export default function Header() {
+  const admin = useSelector((state) => state.admin.data);
+
   return (
     <div className=' bg-white  shadow'>
       <div className='p-2 px-4 grid grid-cols-2'>
@@ -18,7 +21,7 @@ export default function Header() {
           <div className=' flex gap-2'>
             <img className=' w-[40px] h-[40px] border shadow rounded-full' src="https://codeigniter.spruko.com/tailwind/ynex/ynex/assets/images/faces/9.jpg" alt="" />
             <div>
-              <h4 className='text-[#536485] mb-[-7px] font-bold'>Virendra</h4>
+              <h4 className='text-[#536485] mb-[-7px] font-bold'>{admin?.name}</h4>
               <span>Admin</span>
             </div>
           </div>

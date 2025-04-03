@@ -4,6 +4,7 @@ import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { login } from "../../redux/slice/userSlice";
 import { MainContext } from "../../Context";
 import axios from "axios";
+import { dbToCart } from "../../redux/slice/cartSlice";
 
 
 
@@ -34,8 +35,28 @@ export default function Login() {
                     axios.post(API_BASE_URL + USER_URL + "/move-to-db/" + response?.data.user?._id, {
                         cart: JSON.stringify(cartDate)
                     }).then(
-                        (success) => {
-                            console.log(success);
+                        (resp) => {
+                            const dbCartData = resp.data.dbCartData;
+                            let total = 0;
+                            let OriginalPrice = 0;
+                            const Cartdata = dbCartData.map((cd) => {
+                                total += (cd.product_id.finalPrice) * cd.qty;
+                                OriginalPrice += (cd.product_id.originalPrice) * cd.qty;
+                                return {
+                                    productId: cd.product_id._id,
+                                    qty: cd.qty
+                                }
+
+                            })
+
+                            dispatcher(
+                                dbToCart({
+                                    data: Cartdata,
+                                    finalPrice: total,
+                                    originalPrice: OriginalPrice
+                                })
+                            )
+
                         }
                     ).catch(
                         (error) => {

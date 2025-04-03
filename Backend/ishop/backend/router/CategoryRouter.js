@@ -1,10 +1,14 @@
 const express = require("express");
 const categoryRouter = express.Router();
-const fileUpload = require("express-fileupload")
+const fileUpload = require("express-fileupload");
 const CategoryController = require("../controller/CategoryController")
+const adminAuth = require("../middleware/adminAuth")
 
 
-categoryRouter.post("/create", fileUpload({ createParentPath: true }), (req, res) => {
+categoryRouter.post("/create", [
+    fileUpload({ createParentPath: true }),
+    adminAuth
+], (req, res) => {
     const result = new CategoryController().create(req.body, req.files.categoryImage);
     result.then(
         (response) => {

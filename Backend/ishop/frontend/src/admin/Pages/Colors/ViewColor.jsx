@@ -12,6 +12,8 @@ export default function ViewColor() {
   }, []);
 
   return (
+    Array.isArray(color)
+    &&
     <>
       <div className='bg-amber-200 flex justify-between py-3 px-10 shadow-md'>
         <nav className='flex items-center text-black font-bold'>
@@ -33,7 +35,7 @@ export default function ViewColor() {
           </button>
         </Link>
       </div>
-      
+
       <div className='flex justify-center items-center mt-6'>
         <div className='bg-white p-6 rounded-lg shadow-lg w-full max-w-5xl'>
           <div className='overflow-x-auto'>

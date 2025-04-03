@@ -17,7 +17,7 @@ export const userSlice = createSlice({
             state.data = null
             state.token = null
             localStorage.removeItem("user")
-            localStorage.removeItem("user-toekn")
+            localStorage.removeItem("user-token")
 
         },
         lsToUser(state) {

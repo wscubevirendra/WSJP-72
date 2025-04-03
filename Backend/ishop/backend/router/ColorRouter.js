@@ -1,5 +1,6 @@
 const express = require("express");
 const ColorController = require("../controller/ColorController");
+const adminAuth = require("../middleware/adminAuth");
 const ColorRouter = express.Router();
 
 ColorRouter.post(

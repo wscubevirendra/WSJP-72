@@ -5,8 +5,6 @@ import { HiChevronRight } from "react-icons/hi";
 import Select from 'react-select'
 import { MainContext } from '../../../Context';
 import axios from 'axios';
-import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css';
 
 
 export default function AddProduct() {
@@ -143,8 +141,6 @@ export default function AddProduct() {
                                             })
                                             Setselcolors(allcl)
                                         }}
-
-
                                         isMulti closeMenuOnSelect={false} options={
                                             color.map((d, i) => {
                                                 return { value: d._id, label: d.colorName }
@@ -162,8 +158,8 @@ export default function AddProduct() {
                             </div>
                             <div className="col-span-2">
                                 <label className="block text-gray-700 text-sm font-medium">Long Description</label>
-                            <ReactQuill theme="snow" value={longDescription} onChange={SetlongDescription} />
-                                {/* <textarea name="longDescription" rows="4" placeholder="Enter description" className="mt-1 block w-full p-3 border rounded-lg bg-gray-100 border-gray-300 focus:ring-blue-500 focus:border-blue-500"></textarea> */}
+                          
+                                <textarea name="longDescription" rows="4" placeholder="Enter description" className="mt-1 block w-full p-3 border rounded-lg bg-gray-100 border-gray-300 focus:ring-blue-500 focus:border-blue-500"></textarea>
                             </div>
                             <div className="col-span-2">
                                 <label className="block text-gray-700 text-sm font-medium">Thumbnail</label>

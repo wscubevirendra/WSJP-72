@@ -1,10 +1,12 @@
-const generateUniqueImageName = require("../helper")
-const CategoryModel = require("../model/CategoryModel")
+const { generateUniqueImageName } = require("../helper");
+const CategoryModel = require("../model/CategoryModel");
+const ProductModel = require("../model/ProductModel");
 
 class CategoryController {
     create(data, categoryImage) {
         return new Promise(
             (resolve, reject) => {
+
                 try {
                     if (!data.name || !data.slug || !categoryImage) {
                         reject(
@@ -78,10 +80,22 @@ class CategoryController {
             async (resolve, reject) => {
                 try {
                     let categories = null;
+                    const data = [];
                     if (categoryId) {
                         categories = await CategoryModel.findById(categoryId);
                     } else {
                         categories = await CategoryModel.find();
+                        const promise = categories.map(
+                            async (cat) => {
+                                const productCount = await ProductModel.findOne({ categoryId: cat._id }).countDocuments();
+                                data.push(
+                                    {
+                                        ...cat.toJSON(),
+                                        productCount
+                                    }
+                                )
+                            })
+                        await Promise.all(promise)
                     }
 
                     if (categories) {
@@ -89,7 +103,7 @@ class CategoryController {
                             {
                                 msg: "Category found",
                                 status: 1,
-                                categories
+                                categories:data
                             }
                         )
 
