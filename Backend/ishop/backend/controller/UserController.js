@@ -214,7 +214,7 @@ class UserController {
 
                     } else {
                         new CartModel({
-                            user_id: userId,
+                            user_id: cd.userId,
                             product_id: cd.productId,
                             qty: cd.qty
                         }).save()

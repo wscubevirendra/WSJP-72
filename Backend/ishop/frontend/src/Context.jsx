@@ -15,6 +15,7 @@ export default function Context(props) {
     const PRODUCT_URL = "/product";
     const ADMIN_URL = "/admin";
     const USER_URL = "/user";
+    const ORDER_URL = "/order";
     const notify = (msg, flag) => toast(msg, { type: flag ? "success" : "error" });
 
     const getCategory = (category_id = null) => {
@@ -86,7 +87,7 @@ export default function Context(props) {
 
 
     return (
-        <MainContext.Provider value={{ notify, API_BASE_URL, CATEGORY_URL, category, getCategory, COLOR_URL, getColors, color, PRODUCT_URL, getProduct, product, ADMIN_URL,USER_URL }}>
+        <MainContext.Provider value={{ notify, API_BASE_URL, CATEGORY_URL, category, getCategory, COLOR_URL, getColors, color, PRODUCT_URL, getProduct, product, ADMIN_URL, USER_URL, ORDER_URL }}>
             {props.children}
             <ToastContainer autoClose={400} />
         </MainContext.Provider>

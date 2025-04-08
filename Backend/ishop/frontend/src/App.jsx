@@ -20,6 +20,8 @@ import { lsToCart } from './redux/slice/cartSlice'
 import { lsToUser } from './redux/slice/userSlice'
 import Register from './website/Pages/Register'
 import UserLogin from './website/Pages/Login'
+import Checkout from './website/Pages/Checkout'
+import ThankYou from './website/Pages/ThankYou'
 
 
 export default function App() {
@@ -48,6 +50,12 @@ export default function App() {
         {
           path: "/cart",
           element: <Cart />
+        }, {
+          path: "/checkout",
+          element: <Checkout />
+        }, {
+          path: "/thank-you/:orderId",
+          element: <ThankYou />
         }
       ]
 

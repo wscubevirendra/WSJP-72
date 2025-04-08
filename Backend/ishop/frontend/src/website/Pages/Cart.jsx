@@ -5,6 +5,7 @@ import { MainContext } from "../../Context";
 import { emptyCart } from "../../redux/slice/cartSlice";
 import { useNavigate } from "react-router-dom";
 import { formatPriceINR } from "../../helper";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
@@ -87,9 +88,11 @@ const Cart = () => {
           <span>ORDER TOTAL:</span>
           <span>{formatPriceINR(cart.total)}</span>
         </div>
-        <button onClick={isLogin} className="mt-4 cursor-pointer w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700">
-          CHECKOUT
-        </button>
+        <Link to="/checkout">
+          <button onClick={isLogin} className="mt-4 cursor-pointer w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700">
+            CHECKOUT
+          </button></Link>
+
       </div>
       <button onClick={() => {
         dispatcher(emptyCart())
